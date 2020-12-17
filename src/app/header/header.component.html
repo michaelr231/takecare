@@ -1,0 +1,23 @@
+<mat-toolbar class="header" color="primary">
+
+  <mat-icon>menu</mat-icon> <button mat-button>My posts area </button>
+  <span class="spacer"></span>
+  <ul>
+    <li>
+
+      <a *ngIf="userIsAuthenticated"  mat-button routerLink="/create">Create post</a>
+      <a *ngIf="!userIsAuthenticated" mat-button routerLink="/login">Login</a>
+      <a *ngIf="!userIsAuthenticated" mat-button routerLink="/signup">Signup</a>
+
+      <button mat-button *ngIf="userIsAuthenticated" [matMenuTriggerFor]="menu">{{ this.authService.getUsername() }}  </button>
+        <mat-menu #menu="matMenu">
+          <button *ngIf="userIsAuthenticated"  mat-menu-item (click)="onLogout()">Logout</button>
+          <button *ngIf="userIsAuthenticated" mat-menu-item >Edit</button>
+
+        </mat-menu>
+    </li>
+  </ul>
+
+</mat-toolbar>
+
+

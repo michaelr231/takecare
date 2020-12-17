@@ -1,0 +1,33 @@
+<mat-card>
+  <h2>Signup</h2>
+  <br>
+  <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
+    <mat-form-field>
+      <input matInput
+             name="email"
+             ngModel
+             placeholder="E-mail"
+             #emailInput="ngModel"
+             required
+             email>
+      <!--    //help to define mat error in ngif (#title)-->
+      <mat-error *ngIf="emailInput.invalid">Please enter valid email</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput
+             type="password"
+             name="password"
+             ngModel
+             placeholder="Password"
+             #passwordInput="ngModel"
+             required>
+      <mat-error *ngIf="passwordInput.invalid">Please enter valid password</mat-error><br>
+    </mat-form-field>
+    <br><br>
+    <button mat-raised-button color="primary"  type="submit">Signup</button>
+    <br><br>
+  </form>
+</mat-card>
+
+

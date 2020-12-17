@@ -1,0 +1,12 @@
+input,mat-form-field,button {
+  width: 100%;
+}
+
+mat-card,h2 {
+  width: 30%;
+  margin: auto;
+  margin-top: 50px;
+}
+ h2 {
+  font-family: "Open Sans Semibold";
+}
