@@ -9,11 +9,18 @@ import {Router} from '@angular/router';
 
 export class PostService {
   private posts: Post[] = [];
+  public animal: string;
   private postsUpdated = new Subject<Post[]>();
 
     constructor(private http: HttpClient,
                 private router: Router) {
     }
+
+  // tslint:disable-next-line:typedef
+    getAnimal() {
+      return this.animal;
+    }
+
   // tslint:disable-next-line:typedef
   getPosts() {
     // new array of arrays and not change the original array
@@ -25,8 +32,15 @@ export class PostService {
           // @ts-ignore
           // @ts-ignore
           return {
-            title: post.title,
-            content: post.content,
+            animal: post.animal,
+            animalname: post.animalname,
+            selectedGender: post.selectedGender,
+            selectedSize: post.selectedSize,
+            location: post.location,
+            houseTrained: post.houseTrained,
+            age: post.age,
+            health: post.health,
+            aboutanimal: post.aboutanimal,
             id: post._id,
             imagePath: post.imagePath,
             creator: post.creator
@@ -48,27 +62,56 @@ export class PostService {
 
   // tslint:disable-next-line:typedef
   getPost(id: string) {
-      return this.http.get<{ _id: string, title: string, content: string, imagePath: string, creator: string}>(
+      return this.http.get<{
+        _id: string,
+        animal: string,
+        animalname: string,
+        selectedGender: string,
+        selectedSize: string,
+        location: string,
+        houseTrained: string,
+        age: string,
+        health: string,
+        imagePath: string,
+        aboutanimal: string,
+        creator: string}>(
         'http://localhost:3000/api/posts/' + id);
   }
   // tslint:disable-next-line:typedef
-  addPost(title: string, content: string, image: File) {
+  addPost(animal: string, animalname: string,
+          selectedGender: string, selectedSize: string,
+          location: string, houseTrained: string, age: string,
+          health: string, image: File, aboutanimal: string) {
     const postData = new FormData();
-    postData.append('title', title);
-    postData.append('content', content);
-    postData.append('image', image, title);
+    postData.append('animal',  animal);
+    postData.append('animalname', animalname);
+    postData.append('selectedGender', selectedGender);
+    postData.append('selectedSize', selectedSize);
+    postData.append('location', location);
+    postData.append('houseTrained', houseTrained);
+    postData.append('age', age);
+    postData.append('health', health);
+    postData.append('image', image, animalname);
+    postData.append('aboutanimal', aboutanimal);
 
     this.http.post<{message: string, post: Post}>('http://localhost:3000/api/posts', postData)
       .subscribe( responseData => {
-
         const post: Post = {
           id: responseData.post.id,
-          title,
-          content,
+          animal,
+          animalname,
+          selectedGender,
+          selectedSize,
+          location,
+          houseTrained,
+          age,
+          health,
           imagePath: responseData.post.imagePath,
+          aboutanimal,
           creator: null
         };
-
+        console.log(post);
+        console.log(postData);
         this.posts.push(post);
         this.postsUpdated.next([...this.posts]);
         this.router.navigate(['/']);
@@ -76,27 +119,43 @@ export class PostService {
   }
 
   // tslint:disable-next-line:typedef
-  updatePost(id: string, title: string, content: string, image: File | string) {
+  updatePost(id: string, animal: string, animalname: string,
+             selectedGender: string, selectedSize: string,
+             location: string, houseTrained: string, age: string,
+             health: string, image: File | string , aboutanimal: string) {
     // tslint:disable-next-line:prefer-const
       let postData: Post | FormData;
       if (typeof image === 'object') {
         // tslint:disable-next-line:no-shadowed-variable
         const postData = new FormData();
         postData.append('id', id);
-        postData.append('title', title);
-        postData.append('content', content);
-        postData.append('image', image, title);
+        postData.append('animal',  animal);
+        postData.append('animalname', animalname);
+        postData.append('selectedGender', selectedGender);
+        postData.append('selectedSize', selectedSize);
+        postData.append('location', location);
+        postData.append('houseTrained', houseTrained);
+        postData.append('age', age);
+        postData.append('health', health);
+        postData.append('image', image, animalname);
+        postData.append('aboutanimal', aboutanimal);
 
       } else {
         // tslint:disable-next-line:no-shadowed-variable
         postData = {
           id,
-          title,
-          content,
+          animal,
+          animalname,
+          selectedGender,
+          selectedSize,
+          location,
+          houseTrained,
+          age,
+          health,
           imagePath: image,
+          aboutanimal,
           creator: null
         };
-        console.log(postData.imagePath);
 
       }
       this.http.put('http://localhost:3000/api/posts/' + id, postData)

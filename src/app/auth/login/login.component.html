@@ -1,34 +1,40 @@
-<mat-card>
-  <h2>Login</h2>
-  <br>
-  <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
-    <mat-form-field>
-      <input matInput
-             name="email"
-             ngModel
-             placeholder="E-mail"
-              #emailInput="ngModel"
-              required
-              email>
-      <!--    //help to define mat error in ngif (#title)-->
-      <mat-error *ngIf="emailInput.invalid">Please enter valid email</mat-error>
-    </mat-form-field>
+<div style="padding-top: 50px;">
+  <mat-card>
+    <h2>Login</h2>
     <br>
-    <mat-form-field>
-<input matInput
-            name="password"
-         ngModel
-       type="password"
-            placeholder="Password"
-         #passwordInput="ngModel"
-         required>
-      <mat-error *ngIf="passwordInput.invalid">Please enter valid password</mat-error><br>
-    </mat-form-field>
-    <br><br>
-    <button mat-raised-button color="primary" [disabled]="loginForm.invalid" type="submit">Login</button>
-    <br><br>
-    <button mat-raised-button color="primary"  type="submit">forget password?</button>
-  </form>
-</mat-card>
+    <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+      <mat-form-field>
+        <label>
+          <input matInput
+                 name="email"
+                 ngModel
+                 placeholder="E-mail"
+                 #emailInput="ngModel"
+                 required
+                 email>
+        </label>
+        <!--    //help to define mat error in ngif (#title)-->
+        <mat-error *ngIf="emailInput.invalid">Please enter valid email</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <label>
+          <input matInput
+                 name="password"
+                 ngModel
+                 type="password"
+                 placeholder="Password"
+                 #passwordInput="ngModel"
+                 required>
+        </label>
+        <mat-error *ngIf="passwordInput.invalid">Please enter valid password</mat-error><br>
+      </mat-form-field>
+      <br><br>
+      <button mat-raised-button color="primary" [disabled]="loginForm.invalid" type="submit">Login</button>
+      <br><br>
+      <button mat-raised-button color="primary"  type="submit">forget password?</button>
+    </form>
+  </mat-card>
 
 
+</div>

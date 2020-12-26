@@ -5,7 +5,7 @@ input,mat-form-field,button {
 mat-card,h2 {
   width: 30%;
   margin: auto;
-  margin-top: 50px;
+  margin-bottom: 50px;
 }
 h2 {
   font-family: "Open Sans Semibold";

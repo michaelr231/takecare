@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 
 export class AuthService {
   private token: string;
+  // @ts-ignore
   private tokenTimer: NodeJS.Timer;
   private authStatusListener = new Subject<boolean>();
   isAuthenticated = false;
@@ -18,15 +19,18 @@ export class AuthService {
   constructor(private http: HttpClient,
               private router: Router) {}
 
-  
+
+  // tslint:disable-next-line:typedef
   getToken() {
     return this.token;
   }
-  
+
+  // tslint:disable-next-line:typedef
   getIsAuth() {
     return this.isAuthenticated;
   }
-  
+
+  // tslint:disable-next-line:typedef
   getUserId() {
     return this.userId;
   }

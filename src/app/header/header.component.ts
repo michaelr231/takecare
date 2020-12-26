@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../auth/auth.service';
 import {Subscription} from 'rxjs';
 
@@ -6,11 +6,12 @@ import {Subscription} from 'rxjs';
 @Component( {
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./style.css']
+  styleUrls: ['./style.css'],
 })
 
 // tslint:disable-next-line:class-name
 export class headerComponent implements OnInit, OnDestroy {
+  isSticky = false;
   userIsAuthenticated = false;
   public username: string;
   private user: string;
@@ -27,6 +28,7 @@ export class headerComponent implements OnInit, OnDestroy {
 }
 
 
+
   // tslint:disable-next-line:typedef
  onLogout() {
     this.authService.logout();
@@ -36,4 +38,7 @@ export class headerComponent implements OnInit, OnDestroy {
     this.authListenerSubs.unsubscribe();
 }
 
+
+
 }
+

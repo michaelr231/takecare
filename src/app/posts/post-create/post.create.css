@@ -1,5 +1,7 @@
 mat-card {
-  margin-top: 1rem;
+  margin: 4rem;
+  width: 60%;
+  justify-content: center;
 }
 
 input,

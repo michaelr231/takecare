@@ -3,9 +3,16 @@ const Post = require('../models/post');
 exports.createPost = (req, res, next) => {
   const url = req.protocol + '://' + req.get('host');
   const post = new Post({
-    title: req.body.title,
-    content: req.body.content,
+    animal: req.body.animal,
+    animalname: req.body.animalname,
+    selectedGender: req.body.selectedGender,
+    selectedSize: req.body.selectedSize,
+    location: req.body.location,
+    houseTrained: req.body.houseTrained,
+    age: req.body.age,
+    health: req.body.health,
     imagePath: url + '/images/' + req.file.filename,
+    aboutanimal: req.body.aboutanimal,
     creator: req.userData.userId
   });
   post.save().then(createdPost => {
@@ -34,9 +41,16 @@ exports.updatePost = (req, res, next) => {
   console.log(imagePath);
   const post = new Post ({
     _id: req.body.id,
-    title: req.body.title,
-    content: req.body.content,
+    animal: req.body.animal,
+    animalname: req.body.animalname,
+    selectedGender: req.body.selectedGender,
+    selectedSize: req.body.selectedSize,
+    location: req.body.location,
+    houseTrained: req.body.houseTrained,
+    age: req.body.age,
+    health: req.body.health,
     imagePath: imagePath,
+    aboutanimal: req.body.aboutanimal,
     creator: req.userData.userId
   });
 

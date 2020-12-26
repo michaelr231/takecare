@@ -3,25 +3,9 @@
 
 <app-header></app-header>
 
-<mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" opened class="example-sidenav">
-    <mat-nav-list class="nav-list">
-    <div class="menu123">
-      <mat-label>
-    <a routerLink="/" mat-menu-item>Home</a>
-      </mat-label>
-    </div>
-
-    </mat-nav-list>
-  </mat-sidenav>
-
-<mat-sidenav-content>
 
 <main>
   <router-outlet></router-outlet>
 </main>
-
-</mat-sidenav-content>
-</mat-sidenav-container>
-
-
+<app-center></app-center>
+<app-footer></app-footer>

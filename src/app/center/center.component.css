@@ -1,0 +1,18 @@
+.center {
+  height: 400px;
+  padding-top: 20px;
+  background-color: white;
+  justify-content: center;
+}
+
+
+.column {
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  flex: 50%;
+ padding: 70px;
+}
+.h1 {
+  font-size: 18px;
+}

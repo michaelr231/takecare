@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="column" >
+    <mat-card class="example-card" >
+      <mat-card-header>
+
+        <mat-card-title><h1> {{ post.animalname }} </h1> <br></mat-card-title>
+
+        <mat-card-subtitle>{{ post.animal }}<br></mat-card-subtitle>
+
+        <mat-card-subtitle>{{ post.location }} - {{ post.selectedSize }} - {{ post.selectedGender }}</mat-card-subtitle>
+      </mat-card-header>
+      <hr>
+
+        <h2 style="padding: 10px;">About</h2>
+      <div class="text">
+        <div class="lab">
+          Gender
+        </div>
+        {{ post.selectedGender}}
+      </div>
+      <br>
+      <div class="text">
+        <div class="lab">
+          Size
+        </div>
+        {{ post.selectedSize}}
+      </div>
+        <br>
+      <div class="text">
+        <div class="lab">
+          House-Trained
+        </div>
+        {{ post.houseTrained}}
+      </div>
+        <br>
+      <div class="text">
+        <div class="lab">
+          Age
+        </div>
+        {{ post.age}}
+      </div>
+       <br>
+      <div class="text">
+        <div class="lab">
+          Health
+        </div>
+        {{ post.health}}
+      </div>
+
+      <br><hr>
+      <mat-card-content>
+        <h1>Meet {{ post.animalname }}</h1><br>
+        {{ post.aboutanimal }}
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+  <div class="column">
+    <div>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    </div>
+    <div>
+      <mat-card class="adoptnow">
+        <div class="row">
+        <mat-icon>
+          <span class="material-icons">
+            location_on
+          </span>
+        </mat-icon> <h3> {{ post.location }} </h3>
+        </div>
+        <br>
+        <button mat-raised-button color="primary"
+                style="width: 100%; height: 50px;"
+                (click)="openDialog()">Adopt NOW</button>
+        <br><br>
+        <button mat-stroked-button color="primary" style="width: 100%; height: 50px;">Share</button>
+        <br><br>
+        <button mat-stroked-button color="primary" style="width: 100%; height: 50px;">Donate</button>
+      </mat-card>
+    </div>
+  </div>
+</div>

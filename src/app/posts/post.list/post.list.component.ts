@@ -3,6 +3,8 @@ import { Post } from '../post.model';
 import {PostService} from '../post.service';
 import { Subscription } from 'rxjs';
 import {AuthService} from '../../auth/auth.service';
+import { NgForm } from '@angular/forms';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-post-list',
@@ -10,11 +12,6 @@ import {AuthService} from '../../auth/auth.service';
   styleUrls: ['./post.list.css'],
 })
 export class PostListComponent implements OnInit, OnDestroy {
-  // posts = [
-  //   {title: 'First Post', content: 'This is the first post'},
-  //   {title: 'second', content: 'This is the second post'},
-  //   {title: 'thirdPost', content: 'This is the third post'},
-  // ];
 
  posts: Post[] = [];
  private postsSub: Subscription;
