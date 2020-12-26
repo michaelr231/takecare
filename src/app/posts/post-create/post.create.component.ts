@@ -2,8 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import { Post } from '../post.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../post.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import { mimeType } from './mime-type.validator';
+
+
 
 @Component({
   selector: 'app-post-create',
@@ -11,12 +13,27 @@ import { mimeType } from './mime-type.validator';
   styleUrls: ['./post.create.css']
 })
 export class PostCreateComponent implements OnInit {
- public post: Post;
- form: FormGroup;
- imgPreviewToUrl: string;
-  private mode = 'create';
-private postID: string;
+  public post: Post;
+  form: FormGroup;
+  selectedGender;
+  selectedSize;
+  houseTrained;
+  // @ts-ignore
 
+  imgPreviewToUrl: string;
+  private mode = 'create';
+  public postID: string;
+  // @ts-ignore
+  animals: Animal[] = [
+    {name: 'Dog'},
+    {name: 'Cat'},
+    {name: 'Rabbit'},
+    {name: 'Fox'},
+    {name: 'Horse'},
+    {name: 'Fish'},
+    {name: 'Parrot'},
+
+  ];
 
  constructor(public postService: PostService,
              public route: ActivatedRoute,
@@ -26,35 +43,63 @@ private postID: string;
   // tslint:disable-next-line:typedef
  ngOnInit() {
    this.form = new FormGroup({
-     title: new FormControl(null,
-       {validators: [Validators.required, Validators.minLength(3)] }),
-     content: new FormControl(null,
+     animal: new FormControl(null,
+       {validators: [Validators.required]}),
+     animalname: new FormControl(null,
+       {validators: [Validators.required]}),
+     selectedGender: new FormControl(null,
+       {validators: [Validators.required]}),
+     selectedSize: new FormControl(null,
+       {validators: [Validators.required]}),
+     location: new FormControl(null,
+       {validators: [Validators.required]}),
+     houseTrained: new FormControl(null,
+       {validators: [Validators.required]}),
+     age: new FormControl(null,
+       {validators: [Validators.required]}),
+     health: new FormControl(null,
        {validators: [Validators.required]}),
      image: new FormControl(null,
-       {validators: [Validators.required], asyncValidators: [mimeType]})
+       {validators: [Validators.required], asyncValidators: [mimeType]}),
+     aboutanimal: new FormControl(null,
+       {validators: [Validators.required]}),
    });
    // @ts-ignore
    this.route.paramMap.subscribe((paramMap: paramMap) =>
    {
      console.log(this.mode);
-     if (paramMap.has('postID')) {
+     if (paramMap.has('postID'))
+     {
         this.mode = 'edit';
         this.postID = paramMap.get('postID');
         this.postService.getPost(this.postID).subscribe(
           postData => {
             this.post = {
               id: postData._id,
-              title: postData.title,
-              content: postData.content,
+              animal: postData.animal,
+              animalname: postData.animalname,
+              selectedGender: postData.selectedGender,
+              selectedSize: postData.selectedSize,
+              location: postData.location,
+              houseTrained: postData.houseTrained,
+              age: postData.age,
+              health: postData.health,
               imagePath: postData.imagePath,
+              aboutanimal: postData.aboutanimal,
               creator: postData.creator
             };
             this.form.setValue({
-              title: this.post.title,
-              content: this.post.content,
-              image: this.post.imagePath
+              animal: this.post.animal,
+              animalname: this.post.animalname,
+              selectedGender: this.post.selectedGender,
+              selectedSize: this.post.selectedSize,
+              location: this.post.location,
+              houseTrained: this.post.houseTrained,
+              age: this.post.age,
+              health: this.post.health,
+              image: this.post.imagePath,
+              aboutanimal: this.post.aboutanimal
             });
-            console.log(this.form.value.imagePath);
           }
         );
       } else {
@@ -78,22 +123,49 @@ private postID: string;
     }
   // tslint:disable-next-line:typedef
   onSavePost() {
+   console.log(
+     this.form.value.animal.name,
+     this.form.value.animalname,
+     this.form.value.selectedGender,
+     this.form.value.selectedSize,
+     this.form.value.location,
+     this.form.value.houseTrained,
+     this.form.value.age,
+     this.form.value.health,
+     this.form.value.image,
+     this.form.value.aboutanimal
+   );
    if (this.form.invalid) {
      return;
    }
    if (this.mode === 'create') {
      this.postService.addPost(
-       this.form.value.title,
-       this.form.value.content,
-       this.form.value.image
+       this.form.value.animal.name,
+     this.form.value.animalname,
+     this.form.value.selectedGender,
+     this.form.value.selectedSize,
+     this.form.value.location,
+     this.form.value.houseTrained,
+     this.form.value.age,
+     this.form.value.health,
+       this.form.value.image,
+     this.form.value.aboutanimal
      );
+
    } else {
 
      this.postService.updatePost(
        this.postID,
-       this.form.value.title,
-       this.form.value.content,
-        this.form.value.image
+       this.form.value.animal,
+       this.form.value.animalname,
+       this.form.value.selectedGender,
+       this.form.value.selectedSize,
+       this.form.value.location,
+       this.form.value.houseTrained,
+       this.form.value.age,
+       this.form.value.health,
+       this.form.value.image,
+       this.form.value.aboutanimal
    );
    }
    this.form.reset();

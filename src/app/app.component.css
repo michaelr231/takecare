@@ -1,6 +1,8 @@
 main {
   width: 80%;
   margin: auto;
+  padding-top: 125px;
+  background-color: whitesmoke;
 }
 .example-container {
  width: 100%;
@@ -11,11 +13,23 @@ main {
   right: 0;
   background: #eee;
 }
+.toolbar1 {
+  color: #eeeeee;
+  background-color: #eeeeee;
+}
 
-mat-sidenav {
-  width: 15%;
-
-
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success {
+  color: #f0fff3;
+  background-color: #155724;
 }
 
 
+.footer {
+  text-align: center;
+}
+.footer {
+  text-align: center;
+}

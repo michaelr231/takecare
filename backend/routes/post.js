@@ -17,7 +17,7 @@ router.put('/:id',
 
 router.get('' , postController.getPosts);
 
-router.get('/:id', check , postController.getPost);
+router.get('/:id', postController.getPost);
 
 router.delete('/:id', check , postController.deletePost);
 

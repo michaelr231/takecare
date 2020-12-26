@@ -1,34 +1,122 @@
-<mat-card>
-<form [formGroup]="form" (submit)="onSavePost()" >
-  <mat-form-field>
-    <input matInput
-           type="text"
-           formControlName="title"
-           placeholder="Post Title"
-         >
-<!--    //help to define mat error in ngif (#title)-->
-    <mat-error *ngIf="form.get('title').invalid">Please enter post title</mat-error>
-  </mat-form-field>
-  <br>
-  <div>
-    <button mat-stroked-button type="button"  (click)="filePicker.click()">Upload Image</button>
-    <input type="file" #filePicker  (change)="onImagePicked($event)">
-  </div>
-  <div class="image-preview" *ngIf="imgPreviewToUrl !== '' && imgPreviewToUrl && form.get('image').valid">
-    <img [src]="imgPreviewToUrl" [alt]="form.value.title">
-  </div>
-  <mat-form-field>
-<textarea matInput
-          rows="5"
-          formControlName="content"
-          placeholder="Post Content"
-         ></textarea>
-<!--    //#content means to help define error ngIf-->
-    <mat-error *ngIf="form.get('content').invalid">Please enter post content</mat-error><br>
-</mat-form-field>
-  <br><br>
-  <button mat-raised-button color="primary" type="submit">Save Post</button>
-</form>
-</mat-card>
+<div style="padding-left: 20%;">
+  <mat-card >
+    <form [formGroup]="form" (submit)="onSavePost()" >
+
+      <h1 style="text-align: center;">Create Pet Adoption Post</h1><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Animal for adoption</mat-label>
+        <mat-select formControlName="animal" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let animal of animals" [value]="animal">
+            {{animal.name}}
+          </mat-option>
+        </mat-select>
 
 
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <label>
+          <input matInput
+                 type="text"
+                 formControlName="animalname"
+                 placeholder="Animal Name"
+          >
+        </label>
+        <!--    //help to define mat error in ngif (#title)-->
+        <mat-error *ngIf="form.get('animalname').invalid">Please enter animal name</mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="selectedGender" [(value)]="selectedGender">
+          <mat-option value="none">None</mat-option>
+          <mat-option value="Male">Male</mat-option>
+          <mat-option value="Female">Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Size</mat-label>
+        <mat-select formControlName="selectedSize" [(value)]="selectedSize">
+          <mat-option value="none">None</mat-option>
+          <mat-option value="Small">Small</mat-option>
+          <mat-option value="Medium">Medium</mat-option>
+          <mat-option value="Large">Large</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput
+                 type="text"
+                 formControlName="location"
+                 placeholder="Location"
+          >
+        </label>
+        <!--    //help to define mat error in ngif (#title)-->
+        <mat-error *ngIf="form.get('location').invalid">Please enter animal location</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>House-Trained</mat-label>
+        <mat-select formControlName="houseTrained" [(value)]="houseTrained">
+          <mat-option value="none">None</mat-option>
+          <mat-option value="Yes">Yes</mat-option>
+          <mat-option value="No">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <label>
+          <input matInput
+                 type="text"
+                 formControlName="age"
+                 placeholder="Age"
+          >
+        </label>
+        <!--    //help to define mat error in ngif (#title)-->
+        <mat-error *ngIf="form.get('age').invalid">Please enter animal age</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <label>
+          <input matInput
+                 type="text"
+                 formControlName="health"
+                 placeholder="Health"
+          >
+        </label>
+        <!--    //help to define mat error in ngif (#title)-->
+        <mat-error *ngIf="form.get('health').invalid">Please enter animal health</mat-error>
+      </mat-form-field>
+      <br>
+      <br>
+
+      <div>
+        <button mat-stroked-button type="button"  (click)="filePicker.click()">Upload Image</button>
+        <input type="file" #filePicker  (change)="onImagePicked($event)">
+      </div>
+      <div class="image-preview" *ngIf="imgPreviewToUrl !== '' && imgPreviewToUrl && form.get('image').valid">
+        <img [src]="imgPreviewToUrl" [alt]="form.value.title">
+      </div>
+
+      <mat-form-field>
+        <label>
+      <textarea matInput
+                rows="8"
+                formControlName="aboutanimal"
+                placeholder="About the Animal">
+
+      </textarea>
+        </label>
+        <!--    //#content means to help define error ngIf-->
+        <mat-error *ngIf="form.get('aboutanimal').invalid">Please enter animal's about</mat-error><br>
+      </mat-form-field>
+      <br><br>
+      <button mat-raised-button color="primary" type="submit">Save Post</button>
+    </form>
+  </mat-card>
+
+
+</div>
