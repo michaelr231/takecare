@@ -24,8 +24,13 @@
 keyboard_arrow_down
 </span> </button>
         <mat-menu #menu="matMenu" >
-          <button *ngIf="userIsAuthenticated"  mat-menu-item >My Account</button>
-          <button *ngIf="userIsAuthenticated"  mat-menu-item (click)="onLogout()">My Posts</button>
+          <div class="row">
+          <button *ngIf="userIsAuthenticated"  mat-menu-item > <span class="material-icons">
+account_circle
+</span>
+
+            My Account </button></div>
+          <a [routerLink]="['./myposts']"> <button *ngIf="userIsAuthenticated"  mat-menu-item >My Posts </button></a>
           <button *ngIf="userIsAuthenticated"  mat-menu-item (click)="onLogout()">Logout</button>
         </mat-menu>
       </li>
@@ -35,11 +40,11 @@ keyboard_arrow_down
     <ul>
       <li>
         <span>
-        <button mat-button #trigger="matMenuTrigger"
+        <a mat-button #trigger="matMenuTrigger"
                 #menuTrigger="matMenuTrigger"
                 (mouseenter)="trigger.openMenu()"
                 [matMenuTriggerFor]="menu1"
-                class="my-menu" >ABOUT US </button>
+                class="my-menu" >ABOUT US </a>
 
           <mat-menu #menu1="matMenu" [overlapTrigger]="false" class="my-menu" >
           <span (mouseleave)="menuTrigger.closeMenu()">

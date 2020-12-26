@@ -1,0 +1,49 @@
+
+
+.image-preview {
+  height: 150px;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1px;
+
+}
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+.content {
+  padding: 16px;
+}
+.content > mat-card {
+  width: 200px;
+}
+.image-preview img {
+  height: 100%;
+}
+
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success {
+  color: #f0fff3;
+  background-color: #155724;
+  width: 100%;
+}
+
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success {
+  color: #f0fff3;
+  background-color: #155724;
+  width: 100%;
+}

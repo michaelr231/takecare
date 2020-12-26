@@ -7,6 +7,7 @@ import {SignupComponent} from './auth/signup/signup.component';
 import {AuthGuard} from './auth/auth.guard';
 import {MainComponent} from './main/main.component';
 import {ViewanimalComponent} from './posts/ViewAnimal/Viewanimal.component';
+import {Myposts} from './User/myposts/myposts';
 
 const routes: Routes = [
   { path: '', component: MainComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   //
   { path: 'viewanimal/:postID' , component: ViewanimalComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'myposts', component: Myposts},
   { path: 'signup', component: SignupComponent}
 ];
 

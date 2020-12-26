@@ -35,6 +35,9 @@ import {MainComponent} from './main/main.component';
 import {MatSelectModule} from '@angular/material/select';
 import {ViewanimalComponent} from './posts/ViewAnimal/Viewanimal.component';
 import {Dialog} from './auth/dialogbox/dialog';
+import {Myposts} from './User/myposts/myposts';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,8 @@ import {Dialog} from './auth/dialogbox/dialog';
     BannerComponent,
     CenterComponent,
     ViewanimalComponent,
-    Dialog
+    Dialog,
+    Myposts
   ],
   imports: [
     BrowserModule,
@@ -73,6 +77,8 @@ import {Dialog} from './auth/dialogbox/dialog';
     FlexLayoutModule,
     MatSelectModule,
     MatMenuModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [ {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
